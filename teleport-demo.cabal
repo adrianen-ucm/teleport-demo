@@ -1,0 +1,34 @@
+cabal-version:      2.4
+name:               teleport-demo
+version:            0.1.0.0
+
+library
+    exposed-modules:  Teleport 
+    build-depends:    base ^>=4.13.0.0,
+                      quipper-language
+    hs-source-dirs:   src
+    ghc-options:      -Wall
+    default-language: Haskell2010
+
+common exe 
+    build-depends:    base ^>=4.13.0.0,
+                      teleport-demo,
+                      quipper-language,
+                      quipper-libraries
+    ghc-options:      -Wall
+    default-language: Haskell2010
+
+executable probability
+    import:           exe
+    hs-source-dirs:   app
+    main-is:          probability.hs
+
+executable simulation
+    import:           exe
+    hs-source-dirs:   app
+    main-is:          simulation.hs
+
+executable pdf
+    import:           exe
+    hs-source-dirs:   app
+    main-is:          pdf.hs
